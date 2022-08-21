@@ -18,12 +18,12 @@ $arr = $res->fetch();
             login($_POST['email']);
         } else {
             $_SESSION['failure'] = 'Wrong password!';            
-            header('Location: signin.php');
+            header('Location: ../signin.php');
             die();
         }
     } else {
         $_SESSION['failure'] = 'Wrong email!';            
-        header('Location: signin.php');
+        header('Location: ../signin.php');
         die();
     }
 ?>
