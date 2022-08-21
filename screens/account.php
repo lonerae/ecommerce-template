@@ -35,7 +35,7 @@
                 </div>
                 <div class="row">
                     <div id="change-email-btn" class="col-md-6">
-                        <button>Change email</button>
+                        <button onclick="changeEmail()">Change email</button>
                     </div>
                     <div id="change-password-btn" class="col-md-6">
                         <button>Change password</button>
@@ -63,4 +63,10 @@ $(function() {
 $(function() {
   $("#footer-placeholder").load("standalone/footer.html");
 })
+</script>
+
+<script>
+    function changeEmail() {
+        window.location = "changeEmail.php";
+    }
 </script>
