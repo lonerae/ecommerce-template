@@ -21,7 +21,7 @@ try {
     login($email);
 } catch (PDOException $e) {
     $_SESSION['failure'] = 'Email already in use!';            
-    header('Location: signin.php');
+    header('Location: ../signin.php');
     die();
 }
 ?>
