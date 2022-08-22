@@ -34,11 +34,8 @@
                     '</div>
                 </div>
                 <div class="row">
-                    <div id="change-email-btn" class="col-md-6">
-                        <button onclick="changeEmail()">Change email</button>
-                    </div>
                     <div id="change-password-btn" class="col-md-6">
-                        <button>Change password</button>
+                        <button onclick="changePassword()">Change password</button>
                     </div>
                 </div>
             </div>';
@@ -66,7 +63,7 @@ $(function() {
 </script>
 
 <script>
-    function changeEmail() {
-        window.location = "changeEmail.php";
+    function changePassword() {
+        window.location = "changePassword.php";
     }
 </script>
