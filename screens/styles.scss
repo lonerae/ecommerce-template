@@ -350,9 +350,29 @@ body {
             p {
                 font-weight: bold;
             }
+        }
+    }
 
-            #change-email-btn {
-                text-align: right;
+    #change-password {
+        margin-top: 50px;
+
+        #change-password-table {
+            background: white;
+            padding: 10px;
+            width: fit-content;
+            margin: auto;
+
+            .row {
+                margin: 20px auto;
+
+                label {
+                    width: max-content;
+                }
+
+                button {
+                    margin: 20px auto 0 auto;
+                    width: fit-content;
+                }
             }
         }
     }
