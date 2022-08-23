@@ -46,22 +46,26 @@
 
 <div id="fav-table" class="row container-fluid main">
 <?php
-    foreach ($arr as $value) {
-      echo '<div class="col-md-3">' .
-             '<div id="' . $value['product'] . '"></div>  
-             </div>
-             <script>
-                $(function() {
-                  $("[id=\''. $value['product'] .'\']").load("standalone/card.html", function() {
-                    $("[id=\''. $value['product'] .'\']").find("img").attr("title","' . $value['product'] . '");
-                    $("[id=\''. $value['product'] .'\']").find("img").attr("src","' . $value['cover'] . '");
-                    $("[id=\''. $value['product'] .'\']").find("h4").text("' . $value['product'] . '");
-                    $("[id=\''. $value['product'] .'\']").find("p").text("' . $value['price'] . '€");
-                    $("[id=\''. $value['product'] .'\']").find("button").val("' . $value['product'] . '");
-                    $("[id=\''. $value['product'] .'\']").find("[name = \'fav-btn\']").prop("disabled",true);
-                  });        
-                });
-              </script>';
+    if (!empty($arr)) {
+      foreach ($arr as $value) {
+        echo '<div class="col-md-3">' .
+              '<div id="' . $value['product'] . '"></div>  
+              </div>
+              <script>
+                  $(function() {
+                    $("[id=\''. $value['product'] .'\']").load("standalone/card.html", function() {
+                      $("[id=\''. $value['product'] .'\']").find("img").attr("title","' . $value['product'] . '");
+                      $("[id=\''. $value['product'] .'\']").find("img").attr("src","' . $value['cover'] . '");
+                      $("[id=\''. $value['product'] .'\']").find("h4").text("' . $value['product'] . '");
+                      $("[id=\''. $value['product'] .'\']").find("p").text("' . $value['price'] . '€");
+                      $("[id=\''. $value['product'] .'\']").find("button").val("' . $value['product'] . '");
+                      $("[id=\''. $value['product'] .'\']").find("[name = \'fav-btn\']").prop("disabled",true);
+                    });        
+                  });
+                </script>';
+      }
+    } else {
+      echo '<p>No items to show.</p>';
     }
     ?>
 </div>
