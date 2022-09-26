@@ -4,13 +4,12 @@ if (empty($_SESSION['loggedin'])) {
     $_SESSION['loggedin'] = False;
 }
 
-function login($email) {
+function login($id,$email) {
   session_regenerate_id();
   $_SESSION['loggedin'] = True;
   $_SESSION['email'] = $email;
   $_SESSION['cart'] = array();
-  $_SESSION['fav'] = array();
-  $_SESSION['id'] = $arr['id'];
+  $_SESSION['id'] = $id;
 
   $_SESSION['success'] = 'Welcome ' . $_SESSION['email'];            
   header('Location: ../index.php');
