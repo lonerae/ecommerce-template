@@ -3,10 +3,12 @@
 if ($_SESSION['loggedin']) {
     $con = connect('db_template');
     $prod = safe($_POST['product']);
+    
+    $query = 'INSERT INTO favourites (userId,product) VALUES (:userId,:product)';
+    $values = [':userId' => $_SESSION['id'],':product' => $prod];
 
-    if (!in_array($prod, $_SESSION['fav'])) {
-        array_push($_SESSION['fav'], $prod);
-    }
+    $ins = $con->prepare($query);
+    $ins->execute($values);
 
     echo true;
 } else {
