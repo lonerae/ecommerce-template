@@ -8,12 +8,13 @@ A highly customisable front-end and back-end template for your ecommerce site.
 
 ## Instructions
 
-- Check databases to see how to setup the databases for your products (or customise it to fit your liking).
-- On screens/helper/headers.php change connect($db) function to match your database.
+- Check `databases` to see how to setup the databases for your products (or customise it to fit your liking).
+  - MySQL commands to create the tables coming soon!
+- On `screens/helper/headers.php` change `function connect($db)` to match your database.
 - Put all files inside the public html folder on your server's control panel, after changing the placeholder values of menus etc.
 
-  ### Email (confirmation.php)
+  ### Email (`confirmation.php`)
 
-  To send automatic email with the order on cart checkout, visit Sendgrid's site for instructions on its install.
+  To set up the automatic emails on cart checkout, check [Sendgrid's instructions](https://github.com/sendgrid/sendgrid-php).
 
 
