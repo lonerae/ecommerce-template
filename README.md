@@ -15,6 +15,6 @@ A highly customisable front-end and back-end template for your ecommerce site.
 
   ### Email (`confirmation.php`)
 
-  To set up the automatic emails on cart checkout, check [Sendgrid's instructions](https://github.com/sendgrid/sendgrid-php).
-
+  To set up the automatic emails on cart checkout, visit [Sendgrid](https://sendgrid.com/) and create an account!
+  - Detailed instructions on the whole process coming soon!  
 
