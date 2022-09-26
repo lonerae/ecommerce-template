@@ -15,7 +15,7 @@ $arr = $res->fetch();
     if (!empty($arr)) {
                
         if (password_verify($_POST['password'], $arr['password'])) {
-            login($_POST['email']);
+            login($arr['id'],$_POST['email']);
         } else {
             $_SESSION['failure'] = 'Wrong password!';            
             header('Location: ../signin.php');
