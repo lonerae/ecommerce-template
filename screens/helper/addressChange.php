@@ -2,11 +2,11 @@
 
 $con = connect('db_template');
 
-$street = $_POST["street"];
-$number = $_POST["number"];
-$area = $_POST["area"];
-$postcode = $_POST["postcode"];
-$phone = $_POST["phone"];
+$street = safe($_POST["street"]);
+$number = safe($_POST["number"]);
+$area = safe($_POST["area"]);
+$postcode = safe($_POST["postcode"]);
+$phone = safe($_POST["phone"]);
 
 $address = $street . " " . $number . ", " . $area;
 
