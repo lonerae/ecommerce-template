@@ -4,12 +4,22 @@
 $cartServer = "";
 $cartClient = "";
 $cartScreen = "";
+$sum = 0;
+
+$con = connect('db_template');
+$query = "SELECT address, postcode, phone FROM users WHERE userId = ?";
+
+$res = $con->prepare($query);
+$res->execute(array(safe($_SESSION['id'])));
+$arr = $res->fetch();
+
 foreach ($_SESSION['cart'] as $val) {
-  $cartServer = $cartServer.nl2br('<li>'.$val->name.' (id:'. $val->id.'), ποσότητα: '.$val->quantity.'</li>');
-  $cartClient = $cartClient.nl2br('<li>'.$val->name.' , ποσότητα: '.$val->quantity.'</li>');
+  $cartServer = $cartServer.nl2br('<li>'.$val->name.' (id:'. $val->id.'), quantity: '.$val->quantity.'</li>');
+  $cartClient = $cartClient.nl2br('<li>'.$val->name.' , quantity: '.$val->quantity.'</li>');
   $cartScreen = $cartScreen.
   ('<div class="col-md-6 border">'.$val->name.'</div>
     <div class="col-md-6 border">'.$val->quantity.'</div>');
+  $sum += $val->price * $val->quantity;
 }
 $_SESSION['cart'] = array();
 
@@ -80,12 +90,19 @@ try {
   <h1>Thank you for Purchasing!</h1>
   <p>We've already received your Order! 
   <br> In a few seconds you'll have a copy in your emails as well.</p>
+  <p style="text-align: center;">Order will be shipped to <?php echo explode(",", $arr['address'])[0]; ?> in a few days! </p>
+
   <div id="order-table">
     <h2>Order Information</h2>
-    <div class="row">
-      <div class="col-md-6 border order-title">Item</div>
-      <div class="col-md-6 border order-title">Quantity</div>
-      <?php echo $cartScreen;?>
+    <div>
+      <div class="row">
+        <div class="col-md-6 border order-title">Item</div>
+        <div class="col-md-6 border order-title">Quantity</div>
+        <?php echo $cartScreen;?>
+      </div>
+      <div class="row">
+        <div style="font-weight: bold; font-size: 20px; text-align: right;">TOTAL: <?php echo $sum ?>€</div>
+      </div>
     </div>
   </div>
 </div>
