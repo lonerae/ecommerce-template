@@ -16,6 +16,18 @@ function login($id,$email) {
   die();
 }
 
+function signin($id, $email) {
+  session_regenerate_id();
+  $_SESSION['loggedin'] = True;
+  $_SESSION['email'] = $email;
+  $_SESSION['cart'] = array();
+  $_SESSION['id'] = $id;
+
+  $_SESSION['success'] = 'Welcome ' . $_SESSION['email'];            
+  header('Location: ../address.php');
+  die();
+}
+
 function safe($data) {
   $data = trim($data);
   $data = stripslashes($data);

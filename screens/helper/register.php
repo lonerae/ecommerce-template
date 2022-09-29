@@ -18,7 +18,7 @@ try {
     $res->execute(array($email));
     $arr = $res->fetch();
 
-    login($arr['id'],$email);
+    signin($arr['id'],$email);
 } catch (PDOException $e) {
     $_SESSION['failure'] = 'Email already in use!';            
     header('Location: ../signin.php');
