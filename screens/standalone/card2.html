@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="short-list">
+      <button name="fav-btn" class="fav-btn" onclick="removeFromFavQuick(this.parentNode.parentNode.querySelector('.card-title').textContent)"><i class="fa fa-trash"></i></button>
+      <button name="cart-btn" class="cart-btn" onclick="addToCartQuick(this.parentNode.parentNode.querySelector('.card-title').textContent)"><i class="fa fa-shopping-cart"></i></button>
+    </div>
+    <img class="card-img-top" alt="Card image">
+    <div class="card-body">
+      <h4 class="card-title"></h4>
+      <p class="card-text"></p>
+      <button name="prod-btn" class="btn btn-primary" form="product">Check Item</button>
+    </div>
+  </div>
+  
+  <script>
+    function removeFromFavQuick(name) {
+      $.ajax({
+            type: "POST",
+            url: "helper/favRemove.php",
+            data: {product:name},
+            success: function(data){
+              if (!data) {
+                window.location = "../signin.php";
+              } else {
+                window.location = "favourites.php";
+              };
+            }
+          });
+    }
+  </script>
+  <script>
+    function addToCartQuick(name) {
+      $.ajax({
+            type: "POST",
+            url: "helper/cartUpdate.php",
+            data: {item:name,action:0},
+            success: function(data){
+              alert(data);
+            }
+          });
+    }
+  </script>
