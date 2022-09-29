@@ -20,22 +20,53 @@
     <div id="nav-placeholder"></div>
 
     <?php
-        //Haven't made the change email and password buttons yet
         if ($_SESSION['loggedin']) {
-            echo '
+          $con = connect('db_template');
+          $query = 'SELECT accounts.email, users.address, users.postcode, users.phone FROM accounts
+          INNER JOIN users ON accounts.id = users.userId
+          WHERE accounts.id = ?';
+
+          $res = $con->prepare($query);
+          $res->execute(array(safe($_SESSION['id'])));
+          $arr = $res->fetch();
+          
+          echo '
             <div id="account-container" class="container-fluid main">
                 <div class="row">
                     <h2>MY ACCOUNT</h2>
                     <div class="col-md-6 border">
-                            <p>My email:</p>
+                            <p>Email:</p>
                     </div>
                     <div class="col-md-6 border">'
-                            . $_SESSION['email'] .
+                            . $arr['email'] .
                     '</div>
                 </div>
                 <div class="row">
-                    <div id="change-password-btn" class="col-md-6">
-                        <button onclick="changePassword()">Change password</button>
+                    <div class="col-md-6 border">
+                            <p style="font-weight: bold;">Address:</p>
+                    </div>
+                    <div class="col-md-6 border">'
+                            . $arr['address'] . ", " . $arr['postcode'] .
+                    '</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 border">
+                            <p style="font-weight: bold;">Phone:</p>
+                    </div>
+                    <div class="col-md-6 border">'
+                            . $arr['phone'] .
+                    '</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="change-password-btn">
+                            <button onclick="changePassword()">Change password</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="change-details-btn">
+                            <button onclick="changeDetails()">Edit address details</button>
+                        </div>
                     </div>
                 </div>
             </div>';
@@ -65,5 +96,9 @@ $(function() {
 <script>
     function changePassword() {
         window.location = "changePassword.php";
+    }
+    function changeDetails() {
+        window.location = "changeDetails.php";
+
     }
 </script>
