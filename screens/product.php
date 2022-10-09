@@ -114,7 +114,6 @@
     </div>
 
     <!--Recommendations-->
-    <form action="helper/productMed.php" id="product" name="product" method="post"></form>
     <form action="" name="fav" id="fav" method="post"></form>
 
     <div id="recommendation-container" class="container-fluid">
@@ -132,7 +131,7 @@
                       $("[id=\''. $value['product'] .'\']").find("img").attr("src","' . $value['cover'] . '");
                       $("[id=\''. $value['product'] .'\']").find("h4").text("' . $value['product'] . '");
                       $("[id=\''. $value['product'] .'\']").find("p").text("' . $value['price'] . '€");
-                      $("[id=\''. $value['product'] .'\']").find("button").val("' . $value['product'] . '");
+                    $("[id=\''. $value['product'] .'\']").find("a").attr("href", "product.php?name=' . $value['product'] . '");
                     });        
                   });
                 </script>';

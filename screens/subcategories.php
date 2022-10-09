@@ -34,8 +34,6 @@
 ?>
 
 <!--Results-->
-<form action="helper/productMed.php" id="product" name="product" method="post"></form>
-
 <div id="results-table" class="container-fluid main">
   <div class="row">
     <?php
@@ -51,7 +49,7 @@
                     $("[id=\''. $value['product'] .'\']").find("img").attr("src","' . $value['cover'] . '");
                     $("[id=\''. $value['product'] .'\']").find("h4").text("' . $value['product'] . '");
                     $("[id=\''. $value['product'] .'\']").find("p").text("' . $value['price'] . '€");
-                    $("[id=\''. $value['product'] .'\']").find("button").val("' . $value['product'] . '");
+                    $("[id=\''. $value['product'] .'\']").find("a").attr("href", "product.php?name=' . $value['product'] . '");
                   });        
                 });
               </script>';
