@@ -282,18 +282,75 @@ body .server-msg {
 }
 #account-container .row {
   margin: auto;
-  padding: 20px;
+  padding: 0 20px;
   background-color: white;
 }
 #account-container .row h2 {
+  margin-top: 20px;
   margin-bottom: 50px;
   text-align: center;
 }
 #account-container .row p {
   font-weight: bold;
 }
-#account-container .row #change-email-btn {
-  text-align: right;
+#account-container .row #change-password-btn {
+  margin: 20px 0;
+  float: right;
+}
+#account-container .row #change-details-btn {
+  margin: 20px 0;
+}
+
+#change-password {
+  margin-top: 50px;
+}
+#change-password #change-password-table {
+  background: white;
+  padding: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+#change-password #change-password-table .row {
+  margin: 20px auto;
+}
+#change-password #change-password-table .row label {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+#change-password #change-password-table .row button {
+  margin: 20px auto 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+#change-details {
+  margin-top: 50px;
+}
+#change-details #change-details-table {
+  background: white;
+  padding: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+#change-details #change-details-table .row {
+  margin: 20px auto;
+}
+#change-details #change-details-table .row label, #change-details #change-details-table .row input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+#change-details #change-details-table .row button {
+  margin: 20px auto 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 /*CART*/
@@ -340,25 +397,24 @@ body .server-msg {
 }
 
 /*CONFIRMATION*/
-#confirmation-table h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-#confirmation-table p {
-  text-align: center;
-  margin-bottom: 30px;
-}
-#confirmation-table #order-table {
+#confirmation-container {
   background-color: white;
   text-align: center;
+  margin: auto;
   margin-bottom: 50px;
   padding: 20px 50px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
-#confirmation-table #order-table h2 {
-  margin-bottom: 20px;
+#confirmation-container .row {
+  margin: auto;
+  padding: 20px;
+  background-color: white;
 }
-#confirmation-table #order-table .order-title {
-  font-weight: bold;
+#confirmation-container .row h2 {
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 /*FAVOURITES*/
@@ -400,6 +456,40 @@ body .server-msg {
   margin-top: 20px;
 }
 
+#address {
+  margin-top: 40px;
+  width: 100%;
+}
+#address form {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
+}
+#address form .row {
+  margin: 20px auto;
+}
+#address form .row label, #address form .row input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+#address form p {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+#address form i {
+  float: right;
+}
+#address form button {
+  display: block;
+  margin: 50px auto 0 auto;
+}
+
 /*FOOTER*/
 .footer {
   background-color: black;
@@ -437,22 +527,27 @@ body .server-msg {
     margin-bottom: 0;
     border-bottom: 2px black solid;
   }
+  #navbar-custom .input-group {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
   /*MAIN MENU*/
   #menu {
-    padding-top: 0 !important;
-    padding-right: 0 !important;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin-left: -35px !important;
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
   #menu #main-row {
-    margin-right: 0;
+    margin: 0;
+    width: 100%;
+  }
+  #menu #main-row button {
+    text-align: center;
   }
   #menu .categories {
     border: none;
   }
-  #menu #category-photo {
+  #menu #omadiki {
     display: none;
   }
   #menu .dropend {
@@ -469,9 +564,59 @@ body .server-msg {
     margin: 0 auto;
   }
   /*PRODUCT PAGE*/
-  #preview1, #preview2 {
+  #product-container {
+    display: block;
+    margin: 0 auto;
+    width: 80vw;
+  }
+  #product-container #preview1, #product-container #preview2 {
     float: none !important;
     display: block !important;
     margin: 20px auto !important;
+  }
+  #product-container #product-info {
+    font-size: 16px;
+    max-width: 80vw;
+  }
+  #product-container #product-description {
+    font-size: 12px;
+    max-width: 80vw;
+  }
+  #recommendation-container .col-md-3 {
+    display: block;
+    margin: auto;
+    width: 70%;
+    margin-bottom: 20px;
+  }
+  #recommendation-container form .card {
+    margin: auto;
+  }
+  /*ACCOUNT PAGE*/
+  #account-container {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 20px auto;
+  }
+  #account-container .row .col-md-6 {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+  #account-container .row button {
+    font-size: 14px;
+  }
+  #account-container .row #change-password-btn, #account-container .row #change-details-btn {
+    float: none;
+    margin: 10px 0;
+  }
+  /*CONFIRMATION PAGE*/
+  #confirmation-table #confirmation-container {
+    width: 80vw;
+    padding: 20px 0;
+  }
+  #confirmation-table #confirmation-container .col-md-6 {
+    width: 50%;
+    font-size: 14px;
   }
 }/*# sourceMappingURL=styles.css.map */

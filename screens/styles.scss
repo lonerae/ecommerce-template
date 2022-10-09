@@ -620,24 +620,33 @@ body {
         #navbar-custom {
             margin-bottom: 0;
             border-bottom: 2px black solid;
+
+            .input-group {
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
         }
 
         /*MAIN MENU*/
         #menu {
-            padding-top: 0 !important;
-            padding-right: 0 !important;
-            width: fit-content;
-            margin-left: -35px !important;
+            width: 100%;
+            padding: 0;
+            margin: 0;
 
             #main-row {
-                margin-right: 0;
+                margin: 0;
+                width: 100%;
+
+                button {
+                    text-align: center;
+                }
             }
 
             .categories {
                 border: none;
             }
 
-            #category-photo {
+            #omadiki {
                 display: none;
             }
             .dropend {
@@ -659,9 +668,80 @@ body {
         }
 
     /*PRODUCT PAGE*/
-    #preview1, #preview2 {
-        float: none !important;
-        display: block !important;
-        margin: 20px auto !important;
+    #product-container {
+        display: block;
+        margin: 0 auto;
+        width: 80vw;
+
+        #preview1, #preview2 {
+            float: none !important;
+            display: block !important;
+            margin: 20px auto !important;
+        }
+    
+        #product-info {
+            font-size: 16px;
+            max-width: 80vw;
+        }
+
+        #product-description {
+            font-size: 12px;
+            max-width: 80vw;
+        }
+    }
+
+    #recommendation-container {
+
+        .col-md-3 {
+            display: block;
+            margin: auto;
+            width: 70%;
+            margin-bottom: 20px;
+        }
+        form {
+            .card {
+                margin: auto;
+            }
+        }
+    }
+
+    /*ACCOUNT PAGE*/
+    #account-container {
+        width: fit-content;
+        margin: 20px auto;
+
+        .row {
+
+            .col-md-6 {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+
+            #change-password-btn, #change-details-btn {
+                float: none;
+                margin: 10px 0;
+            }
+        }
+    }
+
+    /*CONFIRMATION PAGE*/
+    #confirmation-table {
+
+        #confirmation-container {
+            
+            width: 80vw;
+            padding: 20px 0;
+
+            .col-md-6 {
+                width: 50%;
+                font-size: 14px;
+            }
+
+        }
     }
 }
