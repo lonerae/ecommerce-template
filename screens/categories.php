@@ -36,8 +36,6 @@
 ?>
 
 <!--Results-->
-<form action="helper/productMed.php" id="product" name="product" method="post"></form>
-
 <div id="results-table" class="container-fluid main">
   <div class="row">
     <?php
