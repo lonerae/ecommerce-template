@@ -20,5 +20,5 @@ A highly customisable front-end and back-end template for your ecommerce site.
   
 ## Known Issues
 
-- If `header('Location: destination.php');` doesn't seem to work, try `echo '<script> window.location.href = "destination.php"; </script>'` instead.
+- If `header('Location: destination.php');` doesn't seem to work, try `echo '<script> window.location.href = "destination.php"; </script>';` instead.
 
