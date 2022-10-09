@@ -1,6 +1,6 @@
 # Ecommerce-template
 
-!WORK IN PROGRESS!
+Functioning version, frequent updates and improvements.
 
 ## About
 
