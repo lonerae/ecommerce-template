@@ -36,8 +36,8 @@ $arr = $res->fetchAll();
 ?>
 
 <!--Navigation Bar-->
-<div id="nav-placeholder"></div>
-
+<?php include "standalone/navbar.php";?>
+    
 <!--Main Body-->
 <div class="main">
   <!--Main Menu-->
@@ -234,20 +234,10 @@ $arr = $res->fetchAll();
 </div>
 
 <!--Footer-->
-<div id="footer-placeholder"></div>
-
+<?php include "standalone/footer.html";?>
 
 </body>
 </html>
-
-<script>
-$(function() {
-  $("#nav-placeholder").load("standalone/navbar.php");
-});
-$(function() {
-  $("#footer-placeholder").load("standalone/footer.html");
-})
-</script>
 
 <script>
   /*for interactive category photo height*/

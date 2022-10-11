@@ -84,8 +84,8 @@ try {
 <body class="container-fluid">
 
 <!--Navigation Bar-->
-<div id="nav-placeholder"></div>
-
+<?php include "standalone/navbar.php";?>
+  
 <div id="confirmation-table" class="container-fluid main">
   <h1>Thank you for Purchasing!</h1>
   <p>We've already received your Order! 
@@ -108,16 +108,7 @@ try {
 </div>
 
 <!--Footer-->
-<div id="footer-placeholder"></div>
-
+<?php include "standalone/footer.html";?>
+  
 </body>
 </html>
-
-<script>
-$(function() {
-  $("#nav-placeholder").load("standalone/navbar.php");
-});
-$(function() {
-  $("#footer-placeholder").load("standalone/footer.html");
-})
-</script>

@@ -17,8 +17,8 @@
 <body class="container-fluid">
 
     <!--Navigation Bar-->
-    <div id="nav-placeholder"></div>
-
+    <?php include "standalone/navbar.php";?>
+  
     <div id="change-password" class="container-fluid main">
         <div id="change-password-table">
             <div class="row">
@@ -52,20 +52,10 @@
     </div>
 
     <!--Footer-->
-    <div id="footer-placeholder"></div>
-
+    <?php include "standalone/footer.html";?>
 
 </body>
 </html>
-
-<script>
-$(function() {
-  $("#nav-placeholder").load("standalone/navbar.php");
-});
-$(function() {
-  $("#footer-placeholder").load("standalone/footer.html");
-})
-</script>
 
 <script>
 let input1 = document.getElementById("old-password");

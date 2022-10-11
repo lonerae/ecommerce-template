@@ -1,6 +1,5 @@
 <?php require "helper/headers.php"; ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +23,8 @@
 ?>
 
   <!--Navigation Bar-->
-  <div id="nav-placeholder"></div>
-
+  <?php include "standalone/navbar.php";?>
+  
   <div id="signin" class="main">
     <div class="row">
       <div class="col-md-3"></div>
@@ -69,19 +68,10 @@
   </div>
 
   <!--Footer-->
-  <div id="footer-placeholder"></div>
-
+  <?php include "standalone/footer.html";?>
+  
 </body>
 </html>
-
-<script>
-$(function() {
-  $("#nav-placeholder").load("standalone/navbar.php");
-});
-$(function() {
-  $("#footer-placeholder").load("standalone/footer.html");
-})
-</script>
 
 <script>
   function showPass(target) {

@@ -23,7 +23,7 @@
     ?>
 
   <!--Navigation Bar-->
-  <div id="nav-placeholder"></div>
+  <?php include "standalone/navbar.php";?>
 
   <div id="address" class="main">
     <form id="register-form" name="register" action="helper/addressUpdate.php" method="post">
@@ -51,16 +51,7 @@
   </div>
 
   <!--Footer-->
-  <div id="footer-placeholder"></div>
+  <?php include "standalone/footer.html";?>
 
 </body>
 </html>
-
-<script>
-$(function() {
-  $("#nav-placeholder").load("standalone/navbar.php");
-});
-$(function() {
-  $("#footer-placeholder").load("standalone/footer.html");
-})
-</script>

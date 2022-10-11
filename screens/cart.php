@@ -1,6 +1,5 @@
 <?php require "helper/headers.php"; ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,7 @@
 <body class="container-fluid">
 
 <!--Navigation Bar-->
-<div id="nav-placeholder"></div>
+<?php include "standalone/navbar.php";?>
 
 <?php 
   if ($_SESSION['loggedin']) {
@@ -91,19 +90,10 @@
 
 
 <!--Footer-->
-<div id="footer-placeholder"></div>
+<?php include "standalone/footer.html";?>
 
 </body>
 </html>
-
-<script>
-$(function() {
-  $("#nav-placeholder").load("standalone/navbar.php");
-});
-$(function() {
-  $("#footer-placeholder").load("standalone/footer.html");
-})
-</script>
 
 <script>
 summer();
