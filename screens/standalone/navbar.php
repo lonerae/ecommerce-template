@@ -1,5 +1,3 @@
-<?php session_start() ?>
-
 <nav id="navbar-custom" class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container-fluid">
       
@@ -26,16 +24,6 @@
         </div>
       </form>
       <form id="categories-form" action="categories.php" method="get"></form>
-      <script>
-      var options = [{"title": "Menu1"},{"title": "Menu2"},{"title": "Menu3"},{"title": "Menu4"},{"title": "Menu5"},{"title": "Menu6"},
-      {"title": "Menu7"},{"title": "Menu8"},{"title": "Menu9"}];  
-  
-      $.each( options, function( key, val ) {
-      var $li = $("<button type='submit' name='category' value='" + val.title + "' form='categories-form'><li>"
-       + val.title + "</li></button>");      
-      $("#dropdown-menu").append($li);       
-      });
-      </script>
   
       <div id="navbarSupportedContent" class="collapse navbar-collapse">
         <div class="navbar-nav ms-auto">
@@ -53,3 +41,14 @@
       
     </div>
 </nav>
+
+<script>
+  var options = [{"title": "Menu1"},{"title": "Menu2"},{"title": "Menu3"},{"title": "Menu4"},{"title": "Menu5"},{"title": "Menu6"},
+  {"title": "Menu7"},{"title": "Menu8"},{"title": "Menu9"}];  
+
+  $.each( options, function( key, val ) {
+  var $li = $("<button type='submit' name='category' value='" + val.title + "' form='categories-form'><li>"
+   + val.title + "</li></button>");      
+  $("#dropdown-menu").append($li);       
+  });
+</script>
