@@ -80,7 +80,6 @@
     <!--Footer-->
     <?php include "standalone/footer.html";?>
 
-
 </body>
 </html>
 
