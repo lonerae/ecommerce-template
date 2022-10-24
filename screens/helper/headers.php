@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (empty($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
 if (empty($_SESSION['loggedin'])) {
     $_SESSION['loggedin'] = False;
 }
@@ -8,7 +11,6 @@ function login($id,$email) {
   session_regenerate_id();
   $_SESSION['loggedin'] = True;
   $_SESSION['email'] = $email;
-  $_SESSION['cart'] = array();
   $_SESSION['id'] = $id;
 
   $_SESSION['success'] = 'Welcome ' . $_SESSION['email'];            
@@ -20,7 +22,6 @@ function signin($id, $email) {
   session_regenerate_id();
   $_SESSION['loggedin'] = True;
   $_SESSION['email'] = $email;
-  $_SESSION['cart'] = array();
   $_SESSION['id'] = $id;
 
   $_SESSION['success'] = 'Welcome ' . $_SESSION['email'];            
