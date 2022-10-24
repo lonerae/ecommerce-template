@@ -1,16 +1,9 @@
 <?php require "headers.php";
+    $cart = JSON_decode($_POST["item"]);
 
-    if ($_SESSION['loggedin']) {
+    if (!in_array($cart->id, array_column($_SESSION['cart'],'id'))) {
+        array_push($_SESSION['cart'], $cart);
+    } 
 
-        $cart = JSON_decode($_POST["item"]);
-        
-        if (!in_array($cart->id, array_column($_SESSION['cart'],'id'))) {
-            array_push($_SESSION['cart'], $cart);
-        } 
-        
-        echo true;
-    } else {
-        $_SESSION['failure'] = 'You must sign in first!';            
-        echo false;
-    }
+    echo true;
 ?>
