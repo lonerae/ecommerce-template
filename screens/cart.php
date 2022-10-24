@@ -20,27 +20,21 @@
 <?php include "standalone/navbar.php";?>
 
 <?php 
-  if ($_SESSION['loggedin']) {
-    if (!empty($_SESSION['cart'])) {
-      $con = connect('db_template');
+  if (!empty($_SESSION['cart'])) {
+    $con = connect('db_template');
 
-      $ids = array_column($_SESSION['cart'],'id');
-        
-      $help_in = str_repeat('?,', count($ids) - 1) . '?';
-      $query = "SELECT productstags.product, products.id, products.price, productsimages.cover FROM productstags
-      INNER JOIN products on products.id = productstags.id
-      INNER JOIN productsimages on productsimages.id = productstags.id
-      WHERE productstags.id IN ($help_in)";
-      
-      $res = $con->prepare($query);
-      $res->execute($ids);
-      
-      $arr = $res->fetchAll();
-    }
-  } else {
-    $_SESSION['failure'] = 'You must sign in first!';            
-    header('Location: signin.php');
-    die();
+    $ids = array_column($_SESSION['cart'],'id');
+
+    $help_in = str_repeat('?,', count($ids) - 1) . '?';
+    $query = "SELECT productstags.product, products.id, products.price, productsimages.cover FROM productstags
+    INNER JOIN products on products.id = productstags.id
+    INNER JOIN productsimages on productsimages.id = productstags.id
+    WHERE productstags.id IN ($help_in)";
+
+    $res = $con->prepare($query);
+    $res->execute($ids);
+
+    $arr = $res->fetchAll();
   }
 ?>
 
@@ -59,7 +53,7 @@
                     <input type="number" id="quantity-'.$value['id'].'" name="quantity" value="' . $q  . '" min="1">
                   </div>
                   <div class="col-md-2 align-self-center cart-col price">
-                    <div id="price-'.$value['id'].'" data-value = "' . $p . '" class="price-box">' . $p * $q . '€</div>
+                    <div id="price-'.$value['id'].'" data-value = "' . $p . '" class="price-box">' . round($p * $q, 1) . '€</div>
                   </div>
                   <div class="col-md-1 align-self-center cart-col trash">
                     <button onclick="removeItem('.$value['id'].')"><i class="fa fa-trash"></i></button>
@@ -101,7 +95,8 @@ function summer() {
   let sum = 0;
   const col = document.getElementsByClassName("price-box");
   for (let i = 0; i<col.length; i++) {
-    sum += parseFloat(col[i].innerHTML.substring(0,col[i].innerHTML.length - 1))
+    sum += parseFloat(col[i].innerHTML.substring(0,col[i].innerHTML.length - 1));
+    sum = Math.round(sum * 10) / 10;
   }
   document.getElementById("sum-box").innerText = sum + "€";
 
@@ -113,9 +108,17 @@ function summer() {
   function loadPage() {
     if (summer() > 0) {
       let pay = document.getElementById("payment-method").value;
-      if (pay != "") {
-        window.location.href = pay;
-      }
+      $.ajax({
+        type: "POST",
+        url: "orderFinaliser.php",
+        success: function(data) {
+          if (data) {
+            window.location = pay;
+          } else {
+            window.location = "signin.php";
+          }
+        }
+      });
     } else {
       alert('Cart is empty!');
     }
@@ -148,7 +151,7 @@ function summer() {
           q = ~~q;
           document.getElementById("quantity-' . $value['id'] . '").value = ~~q;
         }
-        document.getElementById("price-' . $value['id'] . '").innerHTML = p*q + "€";
+        document.getElementById("price-' . $value['id'] . '").innerHTML = Math.round(p*q*10) / 10 + "€";
       
         $.ajax({
           type: "POST",
