@@ -17,8 +17,3 @@ A highly customisable front-end and back-end template for your ecommerce site.
 
   To set up the automatic emails on cart checkout, visit [Sendgrid](https://sendgrid.com/) and create an account!
   - Detailed instructions on the whole process coming soon!  
-  
-## Known Issues
-
-- If `header('Location: destination.php');` doesn't seem to work, try `echo '<script> window.location.href = "destination.php"; </script>';` instead.
-
