@@ -1,6 +1,9 @@
+**deprecated**
+**not getting updated currently**
+
 # Ecommerce-template
 
-Functioning version, frequent updates and improvements.
+Functioning version, needing improvements & tweaking.
 
 ## About
 
