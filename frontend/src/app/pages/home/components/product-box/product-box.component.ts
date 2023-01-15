@@ -5,5 +5,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: './product-box.component.html'
 })
 export class ProductBoxComponent {
-  @Input() fullWidthMode: boolean = false;
+  @Input() fullWidthMode: boolean = false; 
 }
