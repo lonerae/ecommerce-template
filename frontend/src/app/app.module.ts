@@ -1,6 +1,6 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
-import localeEl from '@angular/common/locales/el'; 
+import localeEl from '@angular/common/locales/el';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -21,6 +21,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
+import { FiltersComponent } from './pages/home/components/filters/filters.component';
+import { ProductBoxComponent } from './pages/home/components/product-box/product-box.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { CartService } from './services/cart-service.service';
 
 registerLocaleData(localeEl);
 
@@ -28,7 +33,11 @@ registerLocaleData(localeEl);
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsHeaderComponent,
+    FiltersComponent,
+    ProductBoxComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +59,8 @@ registerLocaleData(localeEl);
   providers: [{
     provide: LOCALE_ID,
     useValue: 'el'
-  }],
+  },
+    CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
