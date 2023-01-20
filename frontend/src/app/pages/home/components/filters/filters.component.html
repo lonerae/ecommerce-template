@@ -2,9 +2,10 @@
     <mat-expansion-panel-header>
         <mat-panel-title> Categories </mat-panel-title>
     </mat-expansion-panel-header>
-    <mat-selection-list [multiple]="false">
+    <mat-selection-list [multiple]="false" #filters>
         <mat-list-option *ngFor="let category of categories" [value]="category" (click)="onShowCategory(category)">
             <button>{{ category }}</button>
         </mat-list-option>
     </mat-selection-list>
+    <button mat-raised-button class="my-5 float-right" color="primary" (click)="clearFilters()">Clear filters</button>
 </mat-expansion-panel>

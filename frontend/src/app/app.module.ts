@@ -25,7 +25,9 @@ import { ProductsHeaderComponent } from './pages/home/components/products-header
 import { FiltersComponent } from './pages/home/components/filters/filters.component';
 import { ProductBoxComponent } from './pages/home/components/product-box/product-box.component';
 import { CartComponent } from './pages/cart/cart.component';
-import { CartService } from './services/cart-service.service';
+import { CartService } from './services/cart.service';
+import { StoreService } from './services/store.service';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeEl);
 
@@ -54,13 +56,14 @@ registerLocaleData(localeEl);
     MatToolbarModule,
     MatTableModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [{
     provide: LOCALE_ID,
     useValue: 'el'
   },
-    CartService],
+  CartService, StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
