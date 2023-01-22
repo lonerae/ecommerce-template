@@ -5,6 +5,9 @@ import gr.medusa3d.backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,6 +20,11 @@ public class ProductService {
         this.productRepository = productRepository;
     }
     public List<Product> getProducts() {
-       return this.productRepository.findAll();
+        List<Product> productList = new ArrayList<>();
+        for (Product p : this.productRepository.findAll()) {
+            p.setPrice(p.getPrice().divide(BigDecimal.valueOf(100), 2, RoundingMode.FLOOR));
+            productList.add(p);
+        }
+       return productList;
     }
 }

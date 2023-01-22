@@ -3,6 +3,8 @@ package gr.medusa3d.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @ToString
@@ -17,7 +19,7 @@ public class Product {
     @Column(name = "id", nullable = false)
     private int id;
     private String title;
-    private int price;
+    private BigDecimal price;
     private String description;
     private String image;
 }
