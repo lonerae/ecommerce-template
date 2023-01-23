@@ -25,4 +25,9 @@ public class ProductController {
     public List<Product> getProducts() {
         return this.productService.getProducts();
     }
+
+    @GetMapping(value = "/category")
+    public List<String> getCategories() {
+        return this.productService.getCategories();
+    }
 }

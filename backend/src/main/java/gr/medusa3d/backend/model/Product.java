@@ -1,9 +1,13 @@
 package gr.medusa3d.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,6 +24,14 @@ public class Product {
     private int id;
     private String title;
     private BigDecimal price;
+    @JsonIgnoreProperties("productSet")
+    @ManyToMany
+    @JoinTable(
+            name = "productcategory",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categorySet;
     private String description;
     private String image;
 }

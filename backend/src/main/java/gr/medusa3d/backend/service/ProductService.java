@@ -1,6 +1,8 @@
 package gr.medusa3d.backend.service;
 
+import gr.medusa3d.backend.model.Category;
 import gr.medusa3d.backend.model.Product;
+import gr.medusa3d.backend.repository.CategoryRepository;
 import gr.medusa3d.backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +16,21 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     @Autowired
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
     public List<Product> getProducts() {
-        List<Product> productList = new ArrayList<>();
-        for (Product p : this.productRepository.findAll()) {
-            p.setPrice(p.getPrice().divide(BigDecimal.valueOf(100), 2, RoundingMode.FLOOR));
-            productList.add(p);
-        }
-       return productList;
+       return  this.productRepository.findAll();
+    }
+
+    public List<String> getCategories() {
+        return this.categoryRepository.findAll()
+                .stream()
+                .map(Category::getName)
+                .toList();
     }
 }

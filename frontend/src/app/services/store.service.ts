@@ -24,7 +24,7 @@ export class StoreService {
 
   getAllCategories(): Observable<Array<string>> {
     return this.httpClient.get<Array<string>>(
-      `${STORE_BASE_URL}/products/categories`
+      `${STORE_BASE_URL}/category`
     );
   }
 }
