@@ -43,13 +43,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onShowCategory(newCategory: string): void {
-    // if (newCategory) {
-    //   this.category = newCategory;
-    //   this.getProducts();
-    // } else {
-    //   this.category = undefined;
-    //   this.getProducts();
-    // }
+    if (newCategory) {
+      this.category = newCategory;
+      this.getProducts();
+    } else {
+      this.category = undefined;
+      this.getProducts();
+    }
   }
 
   onAddToCart(product: Product): void {

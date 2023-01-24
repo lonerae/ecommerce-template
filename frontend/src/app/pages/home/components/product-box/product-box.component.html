@@ -3,7 +3,7 @@
         <img class="my-3 h-[200px]" [src]="product.image" [ngClass]="{'h-200px mx-auto': !fullWidthMode, 'h-[360px] mx-3': fullWidthMode}"/>
         <div class="w-full p-3" [ngClass]="{'px-8 flex flex-col justify-between': fullWidthMode}">
             <div>
-                <span *ngFor="let category of product.categorySet" class="text-xs">{{ category.name + ' ' }}</span>
+                <span *ngFor="let category of product.categorySet" class="text-xs">{{ '[' + category.name + ']' + ' ' }}</span>
                 <p class="truncate hover:whitespace-normal">{{ product.title }}</p>
                 <p *ngIf="fullWidthMode">{{ product.description }}</p>
             </div>
