@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,40 +21,14 @@ public class ProductController {
     @GetMapping
     public List<Product> getProducts(@RequestParam(name="sort", required = false) String sort,
                                      @RequestParam(name="limit", required = false) Integer limit) {
-//        List<Product> productList = this.productService.getProducts();
-//
-//        if (limit != null) {
-//            productList = productList.stream().limit(limit).collect(Collectors.toList());
-//        }
-//        if (sort != null) {
-//            switch (sort) {
-//                case "asc" -> productList.sort((a, b) -> a.getTitle().compareToIgnoreCase(b.getTitle()));
-//                case "desc" -> productList.sort((a,b) -> -a.getTitle().compareToIgnoreCase(b.getTitle()));
-//            }
-//        }
-//
-//        return productList;
-        return this.getProducts("",sort,limit);
+        return this.productService.getProducts(sort, limit);
     }
 
     @GetMapping(path = "/category/{category}")
     public List<Product> getProducts(@PathVariable(value = "category") String category,
                                      @RequestParam(name="sort", required = false) String sort,
                                      @RequestParam(name="limit", required = false) Integer limit) {
-
-        List<Product> productList = this.productService.getProducts(category);
-
-        if (limit != null) {
-            productList = productList.stream().limit(limit).collect(Collectors.toList());
-        }
-        if (sort != null) {
-            switch (sort) {
-                case "asc" -> productList.sort((a, b) -> a.getTitle().compareToIgnoreCase(b.getTitle()));
-                case "desc" -> productList.sort((a,b) -> -a.getTitle().compareToIgnoreCase(b.getTitle()));
-            }
-        }
-
-        return productList;
+        return this.productService.getProducts(category, sort, limit);
     }
 
     @GetMapping({"/category","/category/"})

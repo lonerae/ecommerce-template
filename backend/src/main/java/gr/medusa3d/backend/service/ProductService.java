@@ -7,7 +7,9 @@ import gr.medusa3d.backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -20,25 +22,43 @@ public class ProductService {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
     }
-    public List<Product> getProducts() {
-       return  this.productRepository.findAll();
+    public List<Product> getProducts(String sort, Integer limit) {
+        return  queryResults(sort, limit, this.productRepository.findAll());
     }
 
-    public List<Product> getProducts(String category) {
-        return this.getProducts()
-                .stream()
-                .filter(product ->
-                {
-                    boolean flag = false;
-                    for (Category c : product.getCategorySet()) {
-                        flag = c.getName().equalsIgnoreCase(category);
-                        if (flag) {
-                            break;
-                        }
-                    }
-                    return flag;
-                })
-                .toList();
+    public List<Product> getProducts(String category, String sort, Integer limit) {
+        return queryResults(sort, limit,
+                this.productRepository.findAll()
+                        .stream()
+                        .filter(product ->
+                        {
+                            boolean flag = false;
+                            for (Category c : product.getCategorySet()) {
+                                flag = c.getName().equalsIgnoreCase(category);
+                                if (flag) {
+                                    break;
+                                }
+                            }
+                            return flag;
+                        })
+                        .toList()
+        );
+    }
+
+    private static List<Product> queryResults(String sort, Integer limit, List<Product> productList) {
+        List<Product> productListWithWritePermission = new ArrayList<>(productList);
+        if (sort != null) {
+            switch (sort) {
+                case "asc" -> productListWithWritePermission.sort((a, b) -> a.getTitle().compareToIgnoreCase(b.getTitle()));
+                case "desc" -> productListWithWritePermission.sort((a, b) -> b.getTitle().compareToIgnoreCase(a.getTitle()));
+            }
+        }
+
+        if (limit != null) {
+            productListWithWritePermission = productListWithWritePermission.stream().limit(limit).collect(Collectors.toList());
+        }
+
+        return productListWithWritePermission;
     }
 
     public List<String> getCategories() {

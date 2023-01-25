@@ -11,7 +11,7 @@ export class ProductsHeaderComponent {
 
 
 
-  sort: string = 'desc';
+  sort: string = 'asc';
   itemsShowCount: number = 12;
 
   onSortUpdated(newSort: string): void {

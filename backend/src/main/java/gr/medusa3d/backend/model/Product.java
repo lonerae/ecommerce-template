@@ -1,8 +1,6 @@
 package gr.medusa3d.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +9,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -34,4 +31,9 @@ public class Product {
     private Set<Category> categorySet;
     private String description;
     private String image;
+
+    @Override
+    public String toString() {
+        return title;
+    }
 }
