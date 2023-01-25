@@ -42,4 +42,5 @@ testem.log
 Thumbs.db
 
 .env
-sql/*
+sql/create_tables.sql
+sql/fill_tables.sql

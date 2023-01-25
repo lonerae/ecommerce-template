@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,8 +50,8 @@ public class ProductService {
         List<Product> productListWithWritePermission = new ArrayList<>(productList);
         if (sort != null) {
             switch (sort) {
-                case "asc" -> productListWithWritePermission.sort((a, b) -> a.getTitle().compareToIgnoreCase(b.getTitle()));
-                case "desc" -> productListWithWritePermission.sort((a, b) -> b.getTitle().compareToIgnoreCase(a.getTitle()));
+                case "Ascending price" -> productListWithWritePermission.sort(Comparator.comparingInt(Product::getPrice));
+                case "Descending price" -> productListWithWritePermission.sort((a, b) -> b.getPrice() - a.getPrice());
             }
         }
 

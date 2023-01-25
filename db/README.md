@@ -4,7 +4,7 @@
 - `POSTGRES_PASSWORD`
 - `POSTGRES_DB`
 
-2. To create & fill your DB tables, add an `sql` folder and the following `.sql` scripts inside it:
+2. To create & fill your DB tables, add the following scripts inside the `sql` folder:
 
 - `create_tables.sql`
 - `fill_tables.sql`

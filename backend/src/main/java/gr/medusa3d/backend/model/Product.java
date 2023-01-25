@@ -20,7 +20,7 @@ public class Product {
     @Column(name = "id", nullable = false)
     private int id;
     private String title;
-    private BigDecimal price;
+    private Integer price;
     @JsonIgnoreProperties("productSet")
     @ManyToMany
     @JoinTable(
