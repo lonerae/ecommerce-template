@@ -2,6 +2,8 @@ version: '3.8'
 services:
   mpdb:
     image: postgres:latest
+    container_name: mpdb
+    hostname: mpdb
     restart: always
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
