@@ -1,11 +1,14 @@
 package gr.medusa3d.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+import java.util.Set;
+
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -17,7 +20,20 @@ public class Product {
     @Column(name = "id", nullable = false)
     private int id;
     private String title;
-    private int price;
+    private Integer price;
+    @JsonIgnoreProperties("productSet")
+    @ManyToMany
+    @JoinTable(
+            name = "productcategory",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categorySet;
     private String description;
     private String image;
+
+    @Override
+    public String toString() {
+        return title;
+    }
 }
