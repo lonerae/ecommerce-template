@@ -1,13 +1,51 @@
-<mat-toolbar class="max-w-7xl mx-auto border-x justify-between">
-    <a routerLink="home">eShop</a>
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-        <mat-icon
-            [matBadge]="itemsQuantity"
-            [matBadgeHidden]="!itemsQuantity"
-            matBadgeColor="warn">
-            shopping_cart
-        </mat-icon>
-    </button>
+<mat-toolbar class="max-w-7xl mx-auto border-x">
+    <mat-toolbar-row class="text-sm justify-between">
+        <section>
+            <p>GR | EN</p>
+        </section>
+        <section>
+            <button mat-icon-button>
+                <mat-icon class="text-base"
+                    [matBadge]="itemsQuantity"
+                    [matBadgeHidden]="!itemsQuantity"
+                    matBadgeColor="warn">
+                    account_box
+                </mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="text-base"
+                    [matBadge]="itemsQuantity"
+                    [matBadgeHidden]="!itemsQuantity"
+                    matBadgeColor="warn">
+                    favorite
+                </mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="text-base"
+                    [matBadge]="itemsQuantity"
+                    [matBadgeHidden]="!itemsQuantity"
+                    matBadgeColor="warn">
+                    email
+                </mat-icon>
+            </button>
+            <button mat-icon-button [mat-menu-trigger-for]="menu">
+                <mat-icon class="text-base"
+                    [matBadge]="itemsQuantity"
+                    [matBadgeHidden]="!itemsQuantity"
+                    matBadgeColor="warn">
+                    shopping_cart
+                </mat-icon>
+            </button>
+        </section>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <section>
+            <a routerLink="home">LOGO</a>
+        </section>
+        <section class="mx-auto">
+                <input matInput placeholder="Search">
+        </section>
+    </mat-toolbar-row>
     <mat-menu #menu="matMenu">
         <div class="p-3 divide-y divide-solid">
             <div class="pb-3 flex justify-between">
