@@ -73,17 +73,27 @@
             </div>
         </div>
     </mat-menu>
-    <mat-toolbar-row class="bg-black">
-        <button class="text-white hover:bg-gray-800 h-full w-60 block">
-            <div class="w-100">
-                Catalog
-            </div>
+    <mat-toolbar-row class="bg-black h-10">
+        <button 
+            class="text-white bg-red-600 h-full w-20 block font-thin">
+            SALES
         </button>
-        <button class="text-white hover:bg-gray-800 h-full w-60 block">
-            Custom Orders
-        </button>
-        <button class="text-white hover:bg-gray-800 h-full w-60 block">
-            Sale
-        </button>
+        <div *ngFor="let category of categories">
+            <!-- (click)="navigateMain(category.Category)" -->
+            <button 
+                class="text-white hover:bg-gray-800 h-full w-40 block font-thin outline-none"    
+                #menuTrigger="matMenuTrigger"
+                [matMenuTriggerFor]="children"
+                (mouseenter)="menuTrigger.openMenu()"
+                hoverDropDown
+                [menu]="children"
+                [hoverTrigger]="menuTrigger">
+                {{ category.name }}
+            </button>
+            <mat-menu #children="matMenu" class="hoverDropdown" hasBackdrop="false">
+                <!-- (click)="navigateSubCategory(sub)" -->
+                <button mat-menu-item *ngFor="let subcategory of category.subCategories">{{ subcategory }}</button>
+            </mat-menu>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
