@@ -1,13 +1,47 @@
-<mat-toolbar class="max-w-7xl mx-auto border-x justify-between">
-    <a routerLink="home">eShop</a>
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-        <mat-icon
-            [matBadge]="itemsQuantity"
-            [matBadgeHidden]="!itemsQuantity"
-            matBadgeColor="warn">
-            shopping_cart
-        </mat-icon>
-    </button>
+<mat-toolbar class="max-w-7xl mx-auto border-x">
+    <mat-toolbar-row class="text-sm justify-between">
+        <section>
+            <p>GR | EN</p>
+        </section>
+        <section>
+            <button mat-icon-button>
+                <mat-icon class="text-base">
+                    account_box
+                </mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="text-base">
+                    favorite
+                </mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="text-base">
+                    email
+                </mat-icon>
+            </button>
+            <button mat-icon-button [mat-menu-trigger-for]="menu" class="ml-5">
+                <mat-icon class="text-2xl text-green-700"
+                    [matBadge]="itemsQuantity"
+                    [matBadgeHidden]="!itemsQuantity"
+                    matBadgeColor="warn">
+                    shopping_cart
+                </mat-icon>
+            </button>
+        </section>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <section>
+            <a routerLink="home">LOGO</a>
+        </section>
+        <section class="mx-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Search for a product...</mat-label>
+                <input matInput/>
+                <!-- <input matInput [(ngModel)]="item"/> -->
+                <mat-icon matPrefix>search</mat-icon>
+            </mat-form-field>
+        </section>
+    </mat-toolbar-row>
     <mat-menu #menu="matMenu">
         <div class="p-3 divide-y divide-solid">
             <div class="pb-3 flex justify-between">
@@ -35,4 +69,26 @@
             </div>
         </div>
     </mat-menu>
+    <mat-toolbar-row class="bg-black h-10">
+        <button 
+            class="text-white bg-red-600 h-full w-20 block font-thin">
+            SALES
+        </button>
+        <div *ngFor="let category of categories; let i = index;">
+            <!-- (click)="navigateMain(category.Category)" -->
+            <button 
+                class="text-white hover:bg-gray-800 h-full w-40 block font-thin outline-none"    
+                (mouseenter)="visibleBtn[i] = true; toggleDropdown(i,1);"
+                (mouseleave)=" visibleBtn[i] = false; toggleDropdown(i,0);">
+                {{ category.name }}
+            </button>
+            <ul *ngIf="dropDowns[i]" class="bg-black text-white w-40 font-thin absolute z-10 cursor-pointer"
+                (mouseenter)="visibleLi[i] = true; toggleDropdown(i,1);"
+                (mouseleave)="visibleLi[i] = false; toggleDropdown(i,0);">
+                <li *ngFor="let subcategory of category.subCategories;" class="hover:bg-gray-800 pl-5">
+                    {{ subcategory }}
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
 </mat-toolbar>
