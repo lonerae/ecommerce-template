@@ -5,31 +5,22 @@
         </section>
         <section>
             <button mat-icon-button>
-                <mat-icon class="text-base"
-                    [matBadge]="itemsQuantity"
-                    [matBadgeHidden]="!itemsQuantity"
-                    matBadgeColor="warn">
+                <mat-icon class="text-base">
                     account_box
                 </mat-icon>
             </button>
             <button mat-icon-button>
-                <mat-icon class="text-base"
-                    [matBadge]="itemsQuantity"
-                    [matBadgeHidden]="!itemsQuantity"
-                    matBadgeColor="warn">
+                <mat-icon class="text-base">
                     favorite
                 </mat-icon>
             </button>
             <button mat-icon-button>
-                <mat-icon class="text-base"
-                    [matBadge]="itemsQuantity"
-                    [matBadgeHidden]="!itemsQuantity"
-                    matBadgeColor="warn">
+                <mat-icon class="text-base">
                     email
                 </mat-icon>
             </button>
-            <button mat-icon-button [mat-menu-trigger-for]="menu">
-                <mat-icon class="text-base"
+            <button mat-icon-button [mat-menu-trigger-for]="menu" class="ml-5">
+                <mat-icon class="text-2xl text-green-700"
                     [matBadge]="itemsQuantity"
                     [matBadgeHidden]="!itemsQuantity"
                     matBadgeColor="warn">
@@ -43,7 +34,12 @@
             <a routerLink="home">LOGO</a>
         </section>
         <section class="mx-auto">
-                <input matInput placeholder="Search">
+            <mat-form-field appearance="outline">
+                <mat-label>Search for a product...</mat-label>
+                <input matInput/>
+                <!-- <input matInput [(ngModel)]="item"/> -->
+                <mat-icon matPrefix>search</mat-icon>
+            </mat-form-field>
         </section>
     </mat-toolbar-row>
     <mat-menu #menu="matMenu">
@@ -78,22 +74,21 @@
             class="text-white bg-red-600 h-full w-20 block font-thin">
             SALES
         </button>
-        <div *ngFor="let category of categories">
+        <div *ngFor="let category of categories; let i = index;">
             <!-- (click)="navigateMain(category.Category)" -->
             <button 
                 class="text-white hover:bg-gray-800 h-full w-40 block font-thin outline-none"    
-                #menuTrigger="matMenuTrigger"
-                [matMenuTriggerFor]="children"
-                (mouseenter)="menuTrigger.openMenu()"
-                hoverDropDown
-                [menu]="children"
-                [hoverTrigger]="menuTrigger">
+                (mouseenter)="visibleBtn[i] = true; toggleDropdown(i,1);"
+                (mouseleave)=" visibleBtn[i] = false; toggleDropdown(i,0);">
                 {{ category.name }}
             </button>
-            <mat-menu #children="matMenu" class="hoverDropdown" hasBackdrop="false">
-                <!-- (click)="navigateSubCategory(sub)" -->
-                <button mat-menu-item *ngFor="let subcategory of category.subCategories">{{ subcategory }}</button>
-            </mat-menu>
+            <ul *ngIf="dropDowns[i]" class="bg-black text-white w-40 font-thin absolute z-10 cursor-pointer"
+                (mouseenter)="visibleLi[i] = true; toggleDropdown(i,1);"
+                (mouseleave)="visibleLi[i] = false; toggleDropdown(i,0);">
+                <li *ngFor="let subcategory of category.subCategories;" class="hover:bg-gray-800 pl-5">
+                    {{ subcategory }}
+                </li>
+            </ul>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

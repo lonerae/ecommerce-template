@@ -17,6 +17,9 @@ export class HeaderComponent {
     {id:1, name:'Category 1', subCategories:['Sub 1', 'Sub 2', 'Sub 3']},
     {id:2, name:'Category 2', subCategories:['Sub 1','Sub 2']}
   ];
+  dropDowns: number[] = Array<number>(this.categories.length).fill(0);
+  visibleBtn: boolean[] = Array<boolean>(this.categories.length).fill(false);
+  visibleLi: boolean[] = Array<boolean>(this.categories.length).fill(false);
 
   constructor(private cartService: CartService, private uiService: UiService) { }
 
@@ -43,5 +46,17 @@ export class HeaderComponent {
 
   onClearCart(): void {
     this.cartService.clearCart();
+  }
+
+  toggleDropdown(index: number, value: number): void {
+    if (value === 0) {
+      setTimeout(() => {
+        if (!this.visibleBtn[index] && !this.visibleLi[index]) {
+          this.dropDowns[index] = value;
+        }
+      }, 50);
+    } else {
+      this.dropDowns[index] = value;
+    }
   }
 }

@@ -15,12 +15,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';  
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
-import { HoverDropDownDirectiveModule } from './directives/hover-drop-down.directive';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
 import { FiltersComponent } from './pages/home/components/filters/filters.component';
@@ -58,8 +59,9 @@ registerLocaleData(localeEl);
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatInputModule,
+    MatFormFieldModule,
     HttpClientModule,
-    HoverDropDownDirectiveModule
   ],
   providers: [{
     provide: LOCALE_ID,
