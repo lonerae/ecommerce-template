@@ -17,6 +17,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';  
+import {MatDividerModule} from '@angular/material/divider'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CartService } from './services/cart.service';
 import { StoreService } from './services/store.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
 
 registerLocaleData(localeEl);
 
@@ -41,7 +43,8 @@ registerLocaleData(localeEl);
     ProductsHeaderComponent,
     FiltersComponent,
     ProductBoxComponent,
-    CartComponent
+    CartComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ registerLocaleData(localeEl);
     MatSnackBarModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDividerModule,
     HttpClientModule,
   ],
   providers: [{
