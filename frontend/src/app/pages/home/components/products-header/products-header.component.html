@@ -1,4 +1,4 @@
-<mat-card class="mb-4 p-3">
+<mat-card class="mb-5 p-3">
     <div class="flex justify-between">
         <div>
             <button mat-button [matMenuTriggerFor]="sortByMenu">
@@ -12,6 +12,20 @@
                 <button mat-menu-item (click)="onSortUpdated('Descending price')">
                     <span class="text-xs">Descending price</span>
                 </button>
+            </mat-menu>
+            <button mat-button [matMenuTriggerFor]="sortByCategory">
+                Categories
+                <mat-icon>expand_more</mat-icon>
+            </button>
+            <mat-menu class="w-[650px] p-5" #sortByCategory="matMenu">
+                <mat-grid-list cols="3" rowHeight="50px">
+                    <mat-grid-tile *ngFor="let category of categories">
+                        <button mat-menu-item [value]="category" (click)="onShowCategory(category)">
+                            <span class="text-xs">{{ category }}</span>
+                        </button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <button mat-raised-button class="m-2" color="primary" (click)="clearFilters()">All Categories</button>
             </mat-menu>
         </div>
         <div class="flex items-center">

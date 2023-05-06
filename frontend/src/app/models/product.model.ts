@@ -2,9 +2,11 @@ import { Category } from "./category.model";
 
 export interface Product {
     id: number;
-    title: string;
+    name: string;
+    weight: string;
     price: number;
+    vat: string;
     categorySet: Set<Category>;
     description: string;
-    image: string;
+    // image: string;
 }
