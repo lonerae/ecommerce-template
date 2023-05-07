@@ -1,11 +1,17 @@
+<div class="max-w-7xl mx-auto border border-solid border-gray-200">
+    <div class="max-w-6xl container mx-auto py-5 space-y-2 lg:space-y-0 lg:gap-2 lg:grid md:grid-cols-2">
+        <img class="w-full mx-auto" src="../../../assets/placeholder.png">
+        <img class="w-full mx-auto" src="../../../assets/placeholder.png">
+        <img class="w-full mx-auto" src="../../../assets/placeholder.png">
+        <img class="w-full mx-auto" src="../../../assets/placeholder.png">
+        <img class="w-full mx-auto" src="../../../assets/placeholder.png">
+        <img class="w-full mx-auto" src="../../../assets/placeholder.png">
+    </div>
+</div>
 <mat-drawer-container [autosize]="true" class="min-h-full max-w-7xl mx-auto border-x border-solid">
-    <mat-drawer mode="side" opened class="p-6">
-        <app-filters (showCategory)="onShowCategory($event)">
-        </app-filters>
-    </mat-drawer>
-    <mat-drawer-content class="p-6">
-        <app-products-header (columnsCountChange)="onColumnsCountChanged($event)" (itemsCountChange)="onItemsCountChanged($event)" (sortChange)="onSortChanged($event)"></app-products-header>
-        <mat-grid-list gutterSize="16" [cols]="columns" [rowHeight]="rowHeight">
+    <mat-drawer-content>
+        <app-products-header (showCategory)="onShowCategory($event)" (columnsCountChange)="onColumnsCountChanged($event)" (itemsCountChange)="onItemsCountChanged($event)" (sortChange)="onSortChanged($event)"></app-products-header>
+        <mat-grid-list class="mx-5 mb-10" gutterSize="16" [cols]="columns" [rowHeight]="rowHeight">
             <mat-grid-tile *ngFor="let product of products">
                 <app-product-box [product]="product" class="w-full" [fullWidthMode]="columns === 1" (addToCart)="onAddToCart($event)"></app-product-box>
             </mat-grid-tile>
